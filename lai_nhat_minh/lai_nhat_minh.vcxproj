@@ -130,9 +130,6 @@
     <ClCompile Include="lai_nhat_minh.cpp" />
     <ClCompile Include="toan.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="toan.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
