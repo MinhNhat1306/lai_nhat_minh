@@ -22,9 +22,9 @@ int Nhan(int a, int b)
     return ketqua;
 }
 
-int Chia(int a, int b)
+float Chia(int a, int b)
 {
-    int ketqua = a / b;
-    printf("Ket qua bang %d\n", ketqua);
+    float ketqua = (float)a / b;
+    printf("Ket qua bang %.2f\n", ketqua);
     return ketqua;
 }

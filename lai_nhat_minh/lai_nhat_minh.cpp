@@ -1,19 +1,15 @@
 ﻿#include <stdio.h>
 #include <iostream>
 #include "toan.h"
-int Cong(int a, int b);  
-int Tru(int a, int b);
-int Nhan(int a, int b);
-int Chia(int a, int b);
+
 int main()
 {
-    int a, b;
-    scanf_s("%d", &a);
-    scanf_s("%d", &b);
-    int x = Cong(a, b);
-    int y = Tru(a, b);
-    int z = Nhan(a, b);
-    int w = Chia(a, b);
+    int x_1 = 1;
+    int y_2 = 2;
+    int x = Cong(x_1, y_2);
+    int y = Tru(x_1, y_2);
+    int z = Nhan(x_1, y_2);
+    float w = Chia(x_1, y_2);
     return 0;  
 }
 
