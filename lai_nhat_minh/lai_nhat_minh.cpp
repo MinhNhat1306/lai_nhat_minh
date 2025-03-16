@@ -1,16 +1,15 @@
-﻿#include <iostream>
-#include <stdio.h>
+﻿#include <stdio.h>
 
-int main() {
-    int arr[] = { 1, 2, 99, 67, 20 };
-    int giatri_gc = arr[0];
+void main() {
+    char str[] = "hello";
+    int i = 0;
 
-    for (int i = 1; i < 5; i++) {
-        if (giatri_gc < arr[i]) {
-            giatri_gc = arr[i];
+    while (str[i] != '\0') {
+        if (str[i] >= 'a' && str[i] <= 'z') {
+            str[i] = str[i] - 32;
         }
+        i++;
     }
-
-    printf("gia tri lon nhat trong mang: %d", giatri_gc);
-    return 0;
+    printf("Chuoi sau khi chuyen doi: %s", str);
 }
+
