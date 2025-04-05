@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lai_nhat_minh.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="toan.cpp" />
   </ItemGroup>
   <ItemGroup>
