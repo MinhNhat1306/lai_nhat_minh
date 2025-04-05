@@ -1,5 +1,4 @@
-﻿
-#include <string.h>
+﻿#include <string.h>
 #include <stdio.h>
 #include <malloc.h>
 int SoLuongKyTu(char* str)
