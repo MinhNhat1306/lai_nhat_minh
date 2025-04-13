@@ -90,7 +90,7 @@ int TrangThaiFan(char* data)
 }
 
 
-void main()
+/*void main()
 {
     char data[] = "HTTP1.1 200 OK{"\
         "\"light\": \"on\","\
@@ -100,4 +100,4 @@ void main()
 
     printf("data: %s", data);
 
-}
+}*/

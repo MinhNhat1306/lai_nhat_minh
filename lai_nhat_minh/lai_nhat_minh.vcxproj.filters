@@ -17,7 +17,7 @@
     <ClCompile Include="toan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="Struct.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
