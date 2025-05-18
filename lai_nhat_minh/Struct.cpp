@@ -60,6 +60,7 @@ void in_thong_tin(hocsinh_t hs)
 
     const char* xep_hang_str[] = { "Yeu", "Trung Binh", "Kha", "Gioi" };
     printf("Xep hang: %s\n", xep_hang_str[hs.xep_hang]);
+    //hocsinh_t *danhsach=malloc(n * sizeof(hocsinh_t));
 }
 
 int main()

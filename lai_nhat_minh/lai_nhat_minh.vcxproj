@@ -127,11 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="lai_nhat_minh.cpp" />
-    <ClCompile Include="Struct.cpp" />
+    <ClCompile Include="Canhan.cpp" />
+    <ClCompile Include="lai_nhat_minh.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="phan_so.cpp" />
+    <ClCompile Include="Hinh_hoc.cpp" />
     <ClCompile Include="toan.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Canhan.h" />
+    <ClInclude Include="Hinh_hoc.h" />
+    <ClInclude Include="Phan_so.h" />
     <ClInclude Include="toan.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

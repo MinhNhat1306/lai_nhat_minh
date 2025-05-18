@@ -9,21 +9,39 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{37cdc730-76cb-4305-b313-6c83acc3f5e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lai_nhat_minh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="toan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Struct.cpp">
+    <ClCompile Include="phan_so.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hinh_hoc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lai_nhat_minh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Canhan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Phan_so.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hinh_hoc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="toan.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Canhan.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

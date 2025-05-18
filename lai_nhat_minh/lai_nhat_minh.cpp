@@ -1,103 +1,89 @@
-﻿#include <string.h>
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <malloc.h>
-int SoLuongKyTu(char* str)
+#include <iostream>
+#include "CaNhan.h"
+
+int sum_array(int* arr, int num_item)
 {
-    int sl = 0;
-    while (str[sl] != 0)
-    {
-        sl++;
-    }
-    return sl;
+	int sum = 0;
+
+	for (int i = 0; i < num_item; i++)
+	{
+		sum += arr[i];
+	}
+
+	return sum;
 }
-
-// Chức nâng: dùng để tìm ký tự c trong chuỗi str
-// Input:
-//	char* chuoi - chuổi cần tìm
-//	char c - ký tự cần tìm trong chuổi str
-// Output: (char*) địa chỉ của ký tự c trong chuổi str
-char* TimKyTu(char* chuoi, char ky_tu)
+template <class T, int num_item>
+class mang
 {
-    int chieu_dai_chuoi = SoLuongKyTu(chuoi);
-    for (int i = 0; i < chieu_dai_chuoi; i++)
-    {
-        if (chuoi[i] == ky_tu)
-            return chuoi + i;
-    }
-    return 0;
+public:
+	T* data;
+	int size;
+	mang()
+	{
+		data = (T*)malloc(num_item * sizeof(T));
+		size = num_item;
+	}
+	mang(std::initializer_list<T> il)
+	{
+		size = il.size();
+		data = (T*)malloc(size * sizeof(T));
+		if (data == NULL)
+		{
+			throw std::runtime_error("malloc cap phat memory that bai");
+		}
+
+		int temp = 0;
+		for (auto item : il)
+		{
+			data[temp++] = item;
+		}
+	}
+
+	T& operator[](int index)
+	{
+		if (index >= size) {
+			char err_msg[256] = { 0 };
+			sprintf(err_msg, "Vuot qua kich thuoc cua mang  (size: %d)", size);
+			throw std::runtime_error(err_msg);
+		}
+		return data[index];
+	}
+};
+
+template <class T, int size>
+int summ_arr(mang<T, size>  A)
+{
+	int sum = 0;
+	for (int i = 0; i < A.size; i++)
+	{
+		sum += A[i];
+	}
+	return sum;
 }
-
-// Chức nâng: dùng để tìm chuỗi subStr trong chuỗi str
-// Input:
-//	char* str - chuỗi cần tìm
-//	char* sub_str - chuỗi từ khóa cần tìm
-// Output: (char*) địa chỉ của chuổi sub_str trong str
-char* TimChuoi(char* str, char* sub_str)
+#include <array>
+int main()
 {
-    int chieu_dai_str = SoLuongKyTu(str);
-    int chieu_dai_sub_str = SoLuongKyTu(sub_str);
-    for (int i = 0; i < chieu_dai_str; i++)
-    {
-        int j = 0;
-        for (j = 0; j < chieu_dai_sub_str; j++)
-        {
-            if (str[i + j] != sub_str[j])
-                break;
-        }
-        if (j == chieu_dai_sub_str)
-            return str + i;
-    }
-    return 0;
+/*	mang<int, 3> A = {1,2,3};
+	mang<int, 5> B = { 1,2,3,4,5 };
+	int x = summ_arr(B);
+
+	std::cout << x << std::endl;
+
+
+
+	return 0;*/
+	CaNhan person;
+
+	person.setTen("Lai Nhat Minh");
+	person.setTuoi(22);
+	person.setGioiTinh("Nam");
+
+	std::cout << "Ten: " << person.getTen() << std::endl;
+	std::cout << "Tuoi: " << person.getTuoi() << std::endl;
+	std::cout << "Gioi tinh: " << person.getGioiTinh() << std::endl;
+
+	return 0;
 }
-
-// Chức nâng: Lấy trang thái của "fan" trong dữ liệu gửi về từ server
-// Input: 
-//	char* data - chuỗi dữ liệu dducc lấy về từ server
-// Output:
-//	0: tương ứng trạng thái "off"
-//	1: tương ứng trạng thái "on"
-int TrangThaiFan(char* data)
-{
-    // format data: HTTP1.1 200 OK{"light": "on","fan" : "off","motor" : "off"}
-
-    // B1: search tới "fan" : "
-    char tu_khoa[] = "\"fan\" : \"";
-    char* x = TimChuoi(data, tu_khoa);
-    if (!x) return -1; // Tránh lỗi nếu không tìm thấy "fan"
-
-    x += SoLuongKyTu(tu_khoa);
-
-    // B2: Đếm số ký tự đến khi gặp dấu " (dấu kết thúc chuỗi trạng thái)
-    int dem = 0;
-    while (x[dem] != '"' && x[dem] != '\0') // Tránh lỗi nếu x[dem] == '\0'
-    {
-        dem++;
-    }
-
-    // Cấp phát động fan_state thay vì dùng mảng tĩnh
-    char* fan_state = (char*)malloc(dem + 1);
-    if (!fan_state) return -1; // Kiểm tra cấp phát bộ nhớ
-
-    // Copy chuỗi trạng thái của fan
-    memcpy(fan_state, x, dem);
-    fan_state[dem] = '\0'; // Đảm bảo chuỗi kết thúc đúng
-
-    // B3: So sánh với "on" hoặc "off" để return kết quả
-    int result = (strcmp(fan_state, "on") == 0) ? 1 : 0;
-
-    free(fan_state); // Giải phóng bộ nhớ sau khi sử dụng
-    return result;
-}
-
-
-/*void main()
-{
-    char data[] = "HTTP1.1 200 OK{"\
-        "\"light\": \"on\","\
-        "\"fan\" : \"asdasdsad\","\
-        "\"motor\" : \"off\"}";
-    TrangThaiFan(data);
-
-    printf("data: %s", data);
-
-}*/
